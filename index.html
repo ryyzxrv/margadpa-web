@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Pendaftaran Marga DPA - Doraemon Peralatan Ajaib</title>
+    <style>
+        /* CSS Styling Khas Doraemon */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Biru Muda */
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ffde00; /* Kuning Lonceng */
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            color: #007bff; /* Biru Tua */
+            font-size: 2.2em;
+            margin: 0;
+        }
+        header p {
+            color: #d9534f; /* Merah */
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+            margin-top: 20px;
+        }
+        /* Styling Formulir */
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .whatsapp-button {
+            display: block;
+            width: 100%;
+            background-color: #25D366; /* Hijau WhatsApp */
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: background-color 0.3s;
+        }
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+        .note {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .note strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>🌟 Marga DPA: Doraemon Peralatan Ajaib 🌟</h1>
+            <p>Formulir Seleksi Anggota Baru (Kreator Konten TikTok)</p>
+        </header>
+
+        <div class="note">
+            <strong>PERHATIAN:</strong> Setelah mengisi semua kolom, klik tombol "KIRIM VIA WHATSAPP" di bawah. Data permohonan akan terkirim langsung ke Admin Marga DPA.
+        </div>
+
+        <form id="formDPA">
+            
+            <h2>✅ Data Pemohon</h2>
+            
+            <div class="form-group">
+                <label for="namaLengkap">Nama Lengkap Anda</label>
+                <input type="text" id="namaLengkap" required placeholder="Contoh: Audrin">
+            </div>
+            
+            <div class="form-group">
+                <label for="nomorWA">Nomor WhatsApp (WA) Aktif</label>
+                <input type="text" id="nomorWA" required placeholder="Contoh: 081234567890 (Tanpa tanda +)">
+            </div>
+            
+            <div class="form-group">
+                <label for="domisili">Domisili (Kota/Provinsi)</label>
+                <input type="text" id="domisili" required placeholder="Contoh: Jakarta">
+            </div>
+
+            <div class="form-group">
+                <label for="alasan">Alasan Ingin Bergabung dengan Marga DPA</label>
+                <textarea id="alasan" rows="3" required placeholder="Tuliskan motivasi Anda bergabung dan memajukan konten Doraemon."></textarea>
+            </div>
+
+            <h2>🎬 Data TikTok dan Seleksi</h2>
+            
+            <div class="form-group">
+                <label for="namaTikTok">Nama TikTok (Username)</label>
+                <input type="text" id="namaTikTok" required placeholder="Contoh: @doraemonlover">
+            </div>
+
+            <div class="form-group">
+                <label for="linkAkunTikTok">Link Akun TikTok Anda</label>
+                <input type="text" id="linkAkunTikTok" required placeholder="Contoh: https://www.tiktok.com/@doraemonlover">
+            </div>
+
+            <div class="form-group">
+                <label for="linkVideoJJ">Link Video JJ Doraemon Seleksi (Wajib #margadpa)</label>
+                <input type="text" id="linkVideoJJ" required placeholder="Contoh: https://vt.tiktok.com/abcdefg/">
+            </div>
+
+            <button type="submit" class="whatsapp-button">
+                KIRIM PERMOHONAN VIA WHATSAPP 🟢
+            </button>
+
+        </form>
+
+        <h2>⚙️ Panduan Seleksi Marga DPA</h2>
+        <ol>
+            <li>Wajib membuat **Video JJ (Jumpa-Jumpa) Doraemon terbaik** Anda.</li>
+            <li>Video harus diunggah ke akun TikTok pribadi dan **terbuka untuk publik**.</li>
+            <li>Wajib menggunakan *hashtag* resmi: **#margadpa** di deskripsi video.</li>
+            <li>Isi formulir ini dengan lengkap, lalu kirim via WhatsApp.</li>
+            <li>Admin akan me-review video dan data dalam waktu **1-3 hari kerja**.</li>
+        </ol>
+
+    </div>
+
+    <script>
+        // --- JAVASCRIPT UNTUK MENGIRIM DATA KE WHATSAPP ---
+        document.getElementById('formDPA').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah form submit default
+
+            // GANTI NOMOR WHATSAPP INI dengan nomor WA Admin/Bot Marga DPA!
+            // Format: kode negara + nomor (Contoh: 6281234567890)
+            const ADMIN_WA_NUMBER = "+6285311711933"; // GANTI DENGAN NOMOR ADMIN!
+
+            const namaLengkap = document.getElementById('namaLengkap').value;
+            const nomorWA = document.getElementById('nomorWA').value;
+            const domisili = document.getElementById('domisili').value;
+            const alasan = document.getElementById('alasan').value;
+            const namaTikTok = document.getElementById('namaTikTok').value;
+            const linkAkunTikTok = document.getElementById('linkAkunTikTok').value;
+            const linkVideoJJ = document.getElementById('linkVideoJJ').value;
+
+            // Memformat data menjadi teks yang rapi untuk dikirim via WhatsApp
+            let message = `*🌟 PERMOHONAN MASUK MARGA DPA 🌟*%0A%0A`;
+            message += `Assalamualaikum Admin Marga DPA.%0A%0ASaya ingin mengajukan permohonan untuk bergabung dengan Marga DPA. Berikut adalah data diri dan video seleksi saya:%0A%0A`;
+            message += `*--- DATA PEMOHON ---*%0A`;
+            message += `✅ Nama Lengkap: ${namaLengkap}%0A`;
+            message += `✅ Nomor WhatsApp (WA): ${nomorWA}%0A`;
+            message += `✅ Domisili: ${domisili}%0A`;
+            message += `✅ Alasan Bergabung: ${alasan}%0A%0A`;
+            
+            message += `*--- DATA SELEKSI TIKTOK ---*%0A`;
+            message += `✅ Nama TikTok: ${namaTikTok}%0A`;
+            message += `✅ Link Akun TikTok: ${linkAkunTikTok}%0A`;
+            message += `✅ Link Video JJ Seleksi (%23margadpa): ${linkVideoJJ}%0A%0A`;
+            
+            message += `Terima kasih, mohon untuk segera diproses.`;
+
+            // Membuat link WhatsApp
+            const whatsappLink = `https://wa.me/${ADMIN_WA_NUMBER}?text=${message}`;
+
+            // Membuka link di jendela/tab baru
+            window.open(whatsappLink, '_blank');
+        });
+    </script>
+
+</body>
+</html>
