@@ -379,19 +379,24 @@
                 return;
             }
 
-            const tiktokAccountRegex = /^https?:\/\/(?:www\.)?tiktok\.com\/@[\w-]+$/;
+            
+            // Perbarui Regex untuk Link Akun TikTok (biar lebih fleksibel)
+            const tiktokAccountRegex = /^https?:\/\/(?:www\.)?tiktok\.com\/@[\w-.]+[^?]*$/i;
             if (!tiktokAccountRegex.test(linkAkunTikTok)) {
-                formMessage.textContent = '❌ Link Akun TikTok tidak valid. Contoh: https://www.tiktok.com/@username.';
+                formMessage.textContent = '❌ Link Akun TikTok tidak valid. Pastikan format: https://www.tiktok.com/@username.';
                 formMessage.className = 'error-message';
                 return;
             }
 
-            const tiktokVideoRegex = /^https?:\/\/(?:vt\.)?tiktok\.com\/[\w-]+$/;
+            // Perbarui Regex untuk Link Video Seleksi (memperbolehkan vt.tiktok.com atau tiktok.com/t/ dan karakter tambahan)
+            const tiktokVideoRegex = /^https?:\/\/(?:vt\.)?tiktok\.com\/(?:t\/)?[\w-~.?&=]+/i;
             if (!tiktokVideoRegex.test(linkVideoJJ)) {
-                formMessage.textContent = '❌ Link Video Seleksi tidak valid. Contoh: https://vt.tiktok.com/abcdefg/.';
+                formMessage.textContent = '❌ Link Video Seleksi tidak valid. Pastikan link video TikTok yang benar (Contoh: https://vt.tiktok.com/...).';
                 formMessage.className = 'error-message';
                 return;
             }
+            
+            // ... lanjutkan dengan pengiriman WhatsApp jika validasi lolos ...
 
             // If all validation passes, proceed to send via WhatsApp
             let message = `*🌟 PERMOHONAN MASUK MARGA DPA 🌟*%0A%0A`;
