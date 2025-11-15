@@ -3,107 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📝 Pendaftaran Marga DPA - Doraemon Peralatan Ajaib</title>
+    <title>⚡ Marga DPA: Pendaftaran & Seleksi (Neon Mode) ⚡</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/id/thumb/a/a2/Doraemon_character.png/220px-Doraemon_character.png" type="image/png">
     <style>
-        /* CSS Styling Khas Doraemon */
+        /* Variabel CSS untuk Tema */
+        :root {
+            --bg-color: #f0f8ff; /* Light Mode */
+            --text-color: #333;
+            --header-bg: #007bff;
+            --header-text: white;
+            --accent-color: #ffde00; /* Kuning Lonceng */
+            --button-bg: #25D366; /* WhatsApp Green */
+            --button-hover: #128C7E;
+            --form-bg: white;
+            --border-color: #ccc;
+            --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            --neon-blue: #00bfff; /* Sky Blue Neon */
+            --neon-red: #ff007f;  /* Pink Neon */
+            --neon-yellow: #ffee00; /* Yellow Neon */
+        }
+
+        [data-theme='dark'] {
+            --bg-color: #1a1a2e; /* Dark Mode */
+            --text-color: #e0e0e0;
+            --header-bg: #16213e;
+            --header-text: #e0e0e0;
+            --accent-color: #ffde00;
+            --button-bg: #25D366;
+            --button-hover: #128C7E;
+            --form-bg: #0f3460;
+            --border-color: #444;
+            --card-shadow: 0 5px 25px rgba(0, 0, 0, 0.6);
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif; /* Font lebih modern */
             margin: 0;
             padding: 0;
-            background-color: #f0f8ff; /* Biru Muda */
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden; /* Mencegah scroll horizontal */
         }
+
         .container {
             width: 90%;
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 25px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            border: 3px solid #ffde00; /* Kuning Lonceng */
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: var(--form-bg);
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            border: 3px solid var(--accent-color);
+            position: relative;
+            z-index: 1; /* Agar di atas background effect */
         }
+
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
         }
         header h1 {
-            color: #007bff; /* Biru Tua */
-            font-size: 2.2em;
+            color: var(--header-text);
+            font-size: 2.8em;
             margin: 0;
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); /* Efek neon */
         }
         header p {
-            color: #d9534f; /* Merah */
+            color: var(--neon-red);
             font-weight: bold;
+            font-style: italic;
             margin-top: 5px;
+            text-shadow: 0 0 5px var(--neon-red);
         }
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--neon-yellow);
+            box-shadow: 0 0 15px var(--neon-yellow), 0 0 25px var(--neon-yellow) inset;
+            margin-bottom: 15px;
+        }
+        .doraemon-float {
+            position: absolute;
+            width: 100px; /* Ukuran Doraemon */
+            right: -50px; /* Di luar container */
+            top: 20%;
+            animation: floatDoraemon 6s ease-in-out infinite;
+            z-index: 0;
+            filter: drop-shadow(0 0 10px rgba(0,200,255,0.7)); /* Glowing Doraemon */
+        }
+        @keyframes floatDoraemon {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
         h2 {
-            color: #007bff;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 8px;
-            margin-top: 20px;
+            color: var(--neon-blue);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            text-shadow: 0 0 8px rgba(0,191,255,0.5);
         }
-        /* Styling Formulir */
+
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: bold;
+            color: var(--text-color);
+            text-shadow: 0 0 2px rgba(255,255,255,0.2);
         }
         input[type="text"], textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+            width: calc(100% - 24px); /* Sesuaikan dengan padding */
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
             box-sizing: border-box;
             font-size: 1em;
+            background-color: var(--form-bg);
+            color: var(--text-color);
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 8px rgba(0,191,255,0.5);
         }
         textarea {
             resize: vertical;
         }
+        
         .whatsapp-button {
             display: block;
             width: 100%;
-            background-color: #25D366; /* Hijau WhatsApp */
+            background-color: var(--button-bg);
             color: white;
-            padding: 15px;
+            padding: 18px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1.1em;
+            font-size: 1.2em;
             font-weight: bold;
-            margin-top: 25px;
-            transition: background-color 0.3s;
+            margin-top: 30px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.7); /* Neon green shadow */
         }
         .whatsapp-button:hover {
-            background-color: #128C7E;
+            background-color: var(--button-hover);
+            box-shadow: 0 0 25px rgba(18, 140, 126, 0.9);
         }
+
         .note {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffc107;
+            background-color: #fff3cd40; /* Transparan */
+            border-left: 5px solid var(--neon-yellow);
             padding: 15px;
-            margin-top: 20px;
-            border-radius: 5px;
-            font-size: 0.9em;
+            margin-top: 25px;
+            border-radius: 8px;
+            font-size: 0.95em;
+            color: var(--text-color);
+            box-shadow: 0 0 10px rgba(255,238,0,0.3);
         }
         .note strong {
-            color: #856404;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 5px rgba(255,238,0,0.5);
+        }
+
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin-bottom: 10px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--form-bg);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5em;
+            transition: background-color 0.3s, border-color 0.3s;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        .theme-toggle:hover {
+            background-color: #eee;
+            border-color: var(--neon-blue);
+        }
+        [data-theme='dark'] .theme-toggle {
+            background-color: var(--form-bg);
+            color: var(--text-color);
+        }
+        .error-message {
+            color: var(--neon-red);
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(255,0,127,0.5);
+        }
+        .success-message {
+            color: var(--button-bg);
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(37,211,102,0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                margin: 15px auto;
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            .profile-picture {
+                width: 90px;
+                height: 90px;
+            }
+            .doraemon-float {
+                width: 70px;
+                right: -30px;
+            }
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
 
     <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/id/thumb/a/a2/Doraemon_character.png/220px-Doraemon_character.png" alt="Doraemon" class="doraemon-float">
+
+        <div class="theme-toggle" id="themeToggle">
+            ☀️
+        </div>
 
         <header>
-            <h1>🌟 Marga DPA: Doraemon Peralatan Ajaib 🌟</h1>
-            <p>Formulir Seleksi Anggota Baru (Kreator Konten TikTok)</p>
+            <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/b4d3a7a64a0cc278972506761f67c51e~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=c9b7b435&x-expires=1763366400&x-signature=CyM1b3do45Qj8QqL3KI31hy3zfg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2" alt="Marga DPA Profile" class="profile-picture"> <h1>⚡ Marga DPA: Doraemon Peralatan Ajaib ⚡</h1>
+            <p>Platform Kreator Konten Doraemon TikTok Indonesia</p>
         </header>
 
         <div class="note">
-            <strong>PERHATIAN:</strong> Setelah mengisi semua kolom, klik tombol "KIRIM VIA WHATSAPP" di bawah. Data permohonan akan terkirim langsung ke Admin Marga DPA.
+            <strong>🚀 SIAP BERGABUNG?</strong> Isi formulir di bawah ini dengan lengkap dan teliti. Setelah selesai, klik tombol **"KIRIM PERMOHONAN VIA WHATSAPP"** untuk mengirim data langsung ke Admin Marga DPA.
         </div>
 
         <form id="formDPA">
@@ -111,13 +273,13 @@
             <h2>✅ Data Pemohon</h2>
             
             <div class="form-group">
-                <label for="namaLengkap">Nama Lengkap Anda</label>
-                <input type="text" id="namaLengkap" required placeholder="Contoh: Audrin">
+                <label for="namaLengkap">Nama Panggilan Anda</label>
+                <input type="text" id="namaLengkap" required placeholder="Contoh: Ray">
             </div>
             
             <div class="form-group">
                 <label for="nomorWA">Nomor WhatsApp (WA) Aktif</label>
-                <input type="text" id="nomorWA" required placeholder="Contoh: 081234567890 (Tanpa tanda +)">
+                <input type="text" id="nomorWA" required placeholder="Contoh: 081234567890 (Tanpa tanda +)" pattern="[0-9]{10,15}" title="Masukkan nomor WA yang valid (hanya angka, 10-15 digit).">
             </div>
             
             <div class="form-group">
@@ -139,14 +301,15 @@
 
             <div class="form-group">
                 <label for="linkAkunTikTok">Link Akun TikTok Anda</label>
-                <input type="text" id="linkAkunTikTok" required placeholder="Contoh: https://www.tiktok.com/@doraemonlover">
+                <input type="text" id="linkAkunTikTok" required placeholder="Contoh: https://www.tiktok.com/@doraemonlover" pattern="https?:\/\/(?:www\.)?tiktok\.com\/@[\w-]+" title="Masukkan link akun TikTok yang valid.">
             </div>
 
             <div class="form-group">
                 <label for="linkVideoJJ">Link Video JJ Doraemon Seleksi (Wajib #margadpa)</label>
-                <input type="text" id="linkVideoJJ" required placeholder="Contoh: https://vt.tiktok.com/abcdefg/">
+                <input type="text" id="linkVideoJJ" required placeholder="Contoh: https://vt.tiktok.com/abcdefg/" pattern="https?:\/\/(?:vt\.)?tiktok\.com\/[\w-]+" title="Masukkan link video TikTok yang valid.">
             </div>
 
+            <p id="formMessage" class="error-message"></p>
             <button type="submit" class="whatsapp-button">
                 KIRIM PERMOHONAN VIA WHATSAPP 🟢
             </button>
@@ -155,33 +318,82 @@
 
         <h2>⚙️ Panduan Seleksi Marga DPA</h2>
         <ol>
-            <li>Wajib membuat **Video JJ (Jumpa-Jumpa) Doraemon terbaik** Anda.</li>
+            <li>Wajib membuat **Video JJ Doraemon Anda.</li>
             <li>Video harus diunggah ke akun TikTok pribadi dan **terbuka untuk publik**.</li>
             <li>Wajib menggunakan *hashtag* resmi: **#margadpa** di deskripsi video.</li>
             <li>Isi formulir ini dengan lengkap, lalu kirim via WhatsApp.</li>
             <li>Admin akan me-review video dan data dalam waktu **1-3 hari kerja**.</li>
+            <li>Pastikan link akun dan video Anda valid agar tidak ditolak otomatis.</li>
         </ol>
 
     </div>
 
     <script>
-        // --- JAVASCRIPT UNTUK MENGIRIM DATA KE WHATSAPP ---
+        // --- JAVASCRIPT UNTUK FUNGSI TEMA DAN PENGIRIMAN WHATSAPP ---
+
+        // 1. Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '☀️';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '🌙';
+            }
+        });
+
+        // 2. Form Submission with Validation and WhatsApp Send
         document.getElementById('formDPA').addEventListener('submit', function(event) {
             event.preventDefault(); // Mencegah form submit default
 
+            const formMessage = document.getElementById('formMessage');
+            formMessage.textContent = ''; // Clear previous messages
+
             // GANTI NOMOR WHATSAPP INI dengan nomor WA Admin/Bot Marga DPA!
             // Format: kode negara + nomor (Contoh: 6281234567890)
-            const ADMIN_WA_NUMBER = "+6285311711933"; // GANTI DENGAN NOMOR ADMIN!
+            const ADMIN_WA_NUMBER = "+6285311711933"; // <--- GANTI DENGAN NOMOR ADMIN ANDA!
 
-            const namaLengkap = document.getElementById('namaLengkap').value;
-            const nomorWA = document.getElementById('nomorWA').value;
-            const domisili = document.getElementById('domisili').value;
-            const alasan = document.getElementById('alasan').value;
-            const namaTikTok = document.getElementById('namaTikTok').value;
-            const linkAkunTikTok = document.getElementById('linkAkunTikTok').value;
-            const linkVideoJJ = document.getElementById('linkVideoJJ').value;
+            const namaLengkap = document.getElementById('namaLengkap').value.trim();
+            const nomorWA = document.getElementById('nomorWA').value.trim();
+            const domisili = document.getElementById('domisili').value.trim();
+            const alasan = document.getElementById('alasan').value.trim();
+            const namaTikTok = document.getElementById('namaTikTok').value.trim();
+            const linkAkunTikTok = document.getElementById('linkAkunTikTok').value.trim();
+            const linkVideoJJ = document.getElementById('linkVideoJJ').value.trim();
 
-            // Memformat data menjadi teks yang rapi untuk dikirim via WhatsApp
+            // Basic Validation (check if fields are empty)
+            if (!namaLengkap || !nomorWA || !domisili || !alasan || !namaTikTok || !linkAkunTikTok || !linkVideoJJ) {
+                formMessage.textContent = '❌ Mohon isi semua kolom yang wajib diisi!';
+                formMessage.className = 'error-message';
+                return; // Stop function if validation fails
+            }
+
+            // More specific validation (e.g., WA number format, TikTok links)
+            const waRegex = /^[0-9]{10,15}$/;
+            if (!waRegex.test(nomorWA)) {
+                formMessage.textContent = '❌ Nomor WhatsApp tidak valid. Masukkan hanya angka (10-15 digit).';
+                formMessage.className = 'error-message';
+                return;
+            }
+
+            const tiktokAccountRegex = /^https?:\/\/(?:www\.)?tiktok\.com\/@[\w-]+$/;
+            if (!tiktokAccountRegex.test(linkAkunTikTok)) {
+                formMessage.textContent = '❌ Link Akun TikTok tidak valid. Contoh: https://www.tiktok.com/@username.';
+                formMessage.className = 'error-message';
+                return;
+            }
+
+            const tiktokVideoRegex = /^https?:\/\/(?:vt\.)?tiktok\.com\/[\w-]+$/;
+            if (!tiktokVideoRegex.test(linkVideoJJ)) {
+                formMessage.textContent = '❌ Link Video Seleksi tidak valid. Contoh: https://vt.tiktok.com/abcdefg/.';
+                formMessage.className = 'error-message';
+                return;
+            }
+
+            // If all validation passes, proceed to send via WhatsApp
             let message = `*🌟 PERMOHONAN MASUK MARGA DPA 🌟*%0A%0A`;
             message += `Assalamualaikum Admin Marga DPA.%0A%0ASaya ingin mengajukan permohonan untuk bergabung dengan Marga DPA. Berikut adalah data diri dan video seleksi saya:%0A%0A`;
             message += `*--- DATA PEMOHON ---*%0A`;
@@ -197,11 +409,13 @@
             
             message += `Terima kasih, mohon untuk segera diproses.`;
 
-            // Membuat link WhatsApp
-            const whatsappLink = `https://wa.me/${ADMIN_WA_NUMBER}?text=${message}`;
-
-            // Membuka link di jendela/tab baru
+            const whatsappLink = `https://wa.me/${ADMIN_WA_NUMBER}?text=${encodeURIComponent(message)}`;
+            
             window.open(whatsappLink, '_blank');
+
+            formMessage.textContent = '🎉 Permohonan Anda siap dikirim! Silakan konfirmasi di WhatsApp.';
+            formMessage.className = 'success-message';
+            document.getElementById('formDPA').reset(); // Clear form after successful attempt
         });
     </script>
 
